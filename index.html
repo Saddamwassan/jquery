@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> jquery</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <style>
+        .school{
+            background-color: lightgray;
+            /* width: 400px; */
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .class{
+            /* background-color: yellow; */
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            top:100px;
+            left:150px;
+            border:1px solid black;
+        }
+        .inner{
+            background-color: blue;
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            top:100px;
+            left:150px;
+        }
+        .outer{
+            background-color: red;
+            width: 400px;
+            height: 500px;
+        }
+        input{
+            padding:15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="school">
+        <!-- this is school -->
+        <!-- <div class="class">
+            this is class
+        </div> -->
+        <!-- <ol>
+            <li>apple</li>
+            <li>mango</li>
+            <li>banana</li>
+
+        </ol> -->
+        <!-- <button id="append">append</button>
+        <button id="prepend">prepend</button>
+        <button id="before">before</button>
+        <button id="after">after</button> -->
+        <form>
+            <input class="input" type="number">
+            <input type="submit">
+            <p></p>
+        </form>
+
+
+    </div>
+            <!-- <button id="add">add class</button>
+            <button id="remove">remove class</button>
+            <button id="toggle">toggle class</button>
+            <button id="css">css</button>
+            <button id="remove-event">remove-event</button> -->
+
+
+    <script>
+        $(document).ready(function(){
+            $('form').submit(function(e){
+                e.preventDefault();
+                let value = $('.input').val();
+                let newval = value * 10;
+                if(value == ''){
+                    alert("Enter value");
+                }else if(value<=0 ){
+                    alert("Value should be greater than 0.");
+                }else{
+                    $('p').html(newval+"Rs will be given to you.");
+                    // $('p').css("font-size","44px");
+                }
+            });
+        })
+        // $(document).ready(function(){
+        //     // mouse events -----------------
+        //     // onclick 
+        //     $('.class').click(function(){
+        //         $('.class').css('background-color','white');
+        //     })
+        //     // ondoubleclick 
+        //     $('.class').dblclick(function(){
+        //         $('.class').css('background-color','green');
+        //     })
+        //     // onright click 
+        //     $('.class').contextmenu(function(){
+        //         $('.class').css('background-color','orange');
+        //     })
+        //     // mouse enter 
+        //     $('.class').mouseenter(function(){
+        //         $('.class').css('background-color','blue');
+        //     })
+        //     // mouse leave 
+        //     $('.class').mouseleave(function(){
+        //         $('.class').css('background-color','purple');
+        //     })
+        //    let a = $('.school').html();
+        //    console.log(a);
+        // });
+        //  // keyboard events ----------------
+        //     // keypress 
+        //     $('body').keypress(function(){
+        //         $(this).css('background-color','purple');
+        //     });
+        //     // keyup is when we  leave key
+        //     $('body').keyup(function(){
+        //         $(this).css('background-color','yellow');
+        //     });
+        //     // keydown is when we press  key
+        //     $('body').keydown(function(){
+        //         $(this).css('background-color','green  ');
+        //     }) ;
+        //     // form event ---------------
+        //     $(document).ready(function(){
+        //         $("#name").focus(function(){
+        //             $(this).css('background','blue');
+        //         });
+        //         $("#address").blur(function(){
+        //             $(this).css('background','');
+        //         });
+        //         $("#contact").change(function(){
+        //             let a = $(this).value;
+        //             $('#test').html(a)
+        //         });
+        //     });
+        //     // Window events ---------------
+        //     $(document).ready(function(){
+        //         // scroll 
+        //         $('#box').scroll(function(){
+        //             console.log("scrolling continue...");
+        //         });
+        //         // resize 
+        //         $('window').resize(function(){
+        //             console.log("resizing window...");
+        //         }); 
+        //     });
+            // Get methods ---------------
+            // they are used to get different value from our html elements. 
+            // .html() get inner html 
+            // .text() gets text of html elements 
+            // .attr() get attribute value of a class 
+            // .val() takes value from form input 
+              // set  methods ----------------
+            //   we can also set values with these methods on event
+            // $('box').html("<p> this is para</p>");
+            // $('box').text("this is text");
+            // $('box').attr("class","top-div");
+            // $('fname').val("Ahmed Khan"); used in form only
+
+            // addclass 
+            // we add a class to multiple elements or classes as well 
+            // $(document).ready(function(){
+            // $('#add').click(function(){
+            //     $('.school').addClass('outer'); 
+            // });
+            // // removeclass 
+            // $('#remove').click(function(){
+            //     $('.school').removeClass('outer');
+            // });
+            // // toggle 
+            // $('#toggle').click(function(){
+            //     $('.school').toggleClass('outer');
+            // });
+            // });
+            // // css styling 
+            // $(document).ready(function(){
+            //     $('#css').click(function(){
+            //         $('.class').css({"background":"green","font-size":"33px","color":"white"});
+            //     });
+            // });
+            // on and off ----------------
+            // used to set multiple events on same class 
+            // $(document).ready(function(){
+            //     $('.school').on({
+            //         "click": function(){
+            //             $(this).css("background","blue");
+            //         },
+            //         "mouseover": function(){
+            //             $(this).css("background","pink");
+            //         },
+            //         "mouseout": function(){
+            //             $(this).css("background","lightgreen");
+            //         }
+            //     });
+            //     $('#remove-event').click(function(){
+            //         $('.school').off('mouseover mouseout');
+            //     })
+            // });
+            // append and prepend -----------
+            // $(document).ready(function(){
+            // $('#append').click(function(){
+            //     $('ol').append("<li>moreitems</li>")
+            // });
+            // $('#prepend').click(function(){
+            //     $('ol').prepend("<li>item4 </li>")
+            // });
+            // });
+             // before and after ------------------
+            //  $(document).ready(function(){
+            // $('#before').click(function(){
+            //     // we can set many thing in before and after like text,html,image etc
+            //     $('.school').before("<img src='/images/boy.jpg'>")
+            // });
+            // $('#after').click(function(){
+            //     $('.school').after("<p>this is <h3>after</h3></p>")
+            // });
+            // });
+    </script>
+</body>
+</html> 
